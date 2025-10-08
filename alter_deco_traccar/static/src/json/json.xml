@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="web_field_json.JSON">
+        <div class="jsonViewer position-relative" t-ref="json-viewer">
+            <button class="btnSort btn position-absolute top-0 end-0"
+                    t-att-class="{'btn-primary': state.sort}"
+                    t-on-click="() => this.state.sort = !this.state.sort"
+            >
+                <i class="fa fa-sort-alpha-asc"/>
+            </button>
+        </div>
+    </t>
+
+</templates>

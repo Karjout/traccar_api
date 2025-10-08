@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_traccar_traccar_manager,traccar_traccar_manager,model_traccar_traccar,base.group_user,1,1,1,1
+access_device_summury_fleet_manager,device_summury_fleet_manager,model_device_summury_fleet,base.group_user,1,1,1,1
+access_traccar_log_events_manager,traccar_log_events_manager,model_traccar_log_events,base.group_user,1,1,1,1

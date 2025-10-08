@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_fleet_vehicle_form_inherit" model="ir.ui.view">
+            <field name="name">fleet.vehicle.form.inherit</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="after">
+                <group col="2" string="Traccar Details" invisible="is_trackable == False">
+                    <group name="traccar_details" >
+                        <field name="is_trackable" widget="boolean_toggle"/>
+                        <field name="traccar_id"/>
+                        <label for="is_online"/>
+                        <div>
+                            <field name="is_online" readonly="1"/>
+                            <button class="oe_inline btn-success ml-2"  name="device_status" type="object" icon="fa-refresh" title="Device Status" invisible="is_trackable == False" help="click to fetch device status."/>
+                        </div>
+                        <field name="device_id" readonly="1" />
+                        <field name="device_name" readonly="1" />
+                        <field name="traccar_category" readonly="device_id &gt; 0"  />
+                    </group>
+                    <group name="traccar_coordinates" >
+                        <field name="device_long" readonly="1"  />
+                        <field name="device_lat" readonly="1" />
+                        <field name="last_trip_update" readonly="1" />
+                        <field name="last_route_update" readonly="1" />
+                        <field name="totalDistance" string="Total Distance(KM)"/> Km
+                        
+                    </group>
+                </group>
+                <div class="w-100">
+                    <div class="oe_inline">
+                        <button name="open_device_summary" string=" View Device Summary" type="object" class="btn-success w-25 border border-white" icon="fa-list-alt" invisible="is_trackable == False"/>
+                        <button name="fetch_trip_reports" string=" Fetch Trips" type="object" class="btn-success w-25 border border-white" icon="fa-car" title="Vehicles" invisible="is_trackable == False"/>
+                        <button name="get_events" string=" Get Events" type="object" class="btn-success w-25 border border-white" icon="fa-bell" title="Vehicles" invisible="is_trackable == False"/>
+                        <button name="fetch_route_reports" string=" Fetch Routes" type="object" class="btn-success w-25 border border-white" icon="fa-car" title="Vehicles" invisible="is_trackable == False"/>
+                        <button  name="fetch_stops_reports" type="object" string=" View Current Location"  class="btn-success w-25 border border-white" icon="fa-map-marker" invisible="is_trackable == False"/>
+                        <button name="fetch_stops_reports" string="Fetch stops" type="object" class="btn-success w-25 border border-white" icon="fa-street-view" invisible="is_trackable == False"/>
+
+                    </div>
+                </div>
+            </xpath>    
+            <xpath expr="//notebook" position="inside">
+                <page name="events" string="Events(Traccar)">
+                        <field readonly="1"  name="event_ids" widget='one2many'>
+                            <list  delete="false">
+                                <field name="event_id"/>
+                                <field name="device_name"/>
+                                <field name="fix_time"/>
+                                <field name="event_type"/>
+                                <field name="event_data"/>
+                                <field name="event_geofence"/>
+                                <field name="maintenance"/>
+                              </list>
+                        </field>    
+                </page>
+            </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

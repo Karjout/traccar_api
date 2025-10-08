@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_traccar" name="Traccar" web_icon="alter_deco_traccar,static/description/icon.png" sequence="13" action="action_traccar_traccar" groups="base.group_system" />
+
+    </data>
+</odoo>
